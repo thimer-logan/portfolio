@@ -18,6 +18,10 @@
   --lightest-slate: #ffffff;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -28,6 +32,7 @@ body {
   height: 100%;
   /* background: #172534; */
   background: var(--bg-color);
+  position: relative;
 }
 
 h1 {
@@ -51,7 +56,7 @@ p {
 }
 
 main {
-  padding: 0 150px;
+  padding: 0 50px;
   margin: 0 auto;
   /* scroll-padding: 40px; */
   /* overflow-y: scroll; */
@@ -141,11 +146,13 @@ box-shadow:  5px 5px 10px #212121,
 
 .nav-item {
   padding: 0 18px;
+  font-size: 1.2rem;
+  color: #d4f0fc;
 }
 
-.navbar-nav .nav-item .nav-link:hover {
+.nav-link:hover {
   text-decoration: underline;
-  color: #33ff40;
+  color: var(--primary-color);
 }
 
 .nav-link {
@@ -175,29 +182,68 @@ box-shadow:  5px 5px 10px #212121,
   }
 }
 
+
+
 .about-box {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 2rem;
+  align-items: left;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: left;
+}
+
+.about-box h6 {
+  padding-bottom: 20px;
+}
+
+.about-box .list {
+  margin-left: 25px;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }
 
 .skills-box {
-  display: block;
-  padding: 0% 10px;
-  /* align-items: flex-start;
-  justify-content: center;
-  flex-direction: column; */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+  padding: 15px;
 }
 
 .skills-icon {
-  width: 40%;
+  width: 90px;
   height: auto;
+  color: var(--primary-color);
+  padding: 10px;
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 10%);
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
-.roww {
-  padding: 10px;
+.list {
+  margin-left: 15px;
 }
+
+.list li {
+  color: var(--lightest-slate);
+  margin-top: 5px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.list li span i {
+  color: var(--primary-color);
+}
+
+
 
 .progress-bar {
   text-align: left;
@@ -265,16 +311,16 @@ box-shadow:  5px 5px 10px #212121,
   display: block;
 }
 
-/* React Tabs */
+/* Experience & React Tabs */
 
 .react-tabs {
   display: flex;
   margin: 10px 36px;
   width: 100%;
   height: 100%;
-  border: 1px solid #3c3e43;
-  color: white;
-  background: #1c1d1f;
+  /* border: 1px solid #3c3e43; */
+  color: var(--lightest-slate);
+
 }
 
 .react-tabs__tab-list {
@@ -321,31 +367,44 @@ box-shadow:  5px 5px 10px #212121,
   padding-left: 21px;
 }
 
-.panel-content ul li {
-  color: var(--lightest-slate);
+.panel-content .list {
+  margin-left: 30px;
 }
 
-.panel-content ul li span i {
-  color: var(--primary-color);
-}
+/* Projects */
 
-
-
-
-.education-box {
-  padding: 0;
-  background: #042442;
-  list-style: none;
+.project-card-outer {
+  background-image: linear-gradient(163deg, var(--primary-shadow) 0%, var(--primary-color) 100%);
   border-radius: 20px;
-  opacity: 0.95;
+  transition: all .3s;
 }
 
-.education-box li {
+.project-card {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transition: all .2s;
+}
+
+.project-card:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+}
+ 
+.project-card-outer:hover {
+  box-shadow: 0px 0px 30px 1px var(--primary-shadow);
+}
+
+.card-img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Education */
+
+.education-row {
+  padding: 20px 0;
   text-align: left;
-  padding: 15px;
 }
 
-.education-box span {
-  position: relative;
-  margin-left: -10px;
-}

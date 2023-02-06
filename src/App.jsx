@@ -5,22 +5,30 @@ import "./styles.css";
 
 import About from "./components/About";
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Home from "./components/Home";
 import Experience from "./components/Experience";
+import Skills from "./components/Skills";
+
+
 
 function App() {
     return (
         <div className="App">
-            <Navbar />
-            <main>
+        
+        <NavBar />
+
+            
+            <main >
                 <Home />
                 <About />
+                <Skills />
                 <Experience />
                 <Projects />
                 <Education />
+                
             </main>
 
             <Footer />

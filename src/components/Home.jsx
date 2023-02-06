@@ -17,7 +17,7 @@ function Home() {
             </div>
             <div className="col-lg-6">
             <img
-                src={require("../assets/images/me-modified.png")}
+                src={process.env.PUBLIC_URL + "/assets/images/me-modified.png"}
                 alt="jane-doe"
                 className="hero-img"
             />
