@@ -34,7 +34,7 @@ const NavBar = () => {
 //     </div>
 //   </div>
 // </nav>
-<Navbar className='navbar sticky-top' collapseOnSelect expand="lg" variant="dark">
+<Navbar className='navbar' collapseOnSelect expand="lg" variant="dark">
 <Container>
   <Navbar.Brand href="#home"></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
