@@ -15,7 +15,7 @@ function Icon(props) {
             return <SiMongodb className={props.className}/>
         case "Web Development":
             return <VscCode className={props.className}/>
-        case "Artificial Intelligence":
+        case "ML/AI":
             return <GiArtificialIntelligence className={props.className}/>
     
         default:

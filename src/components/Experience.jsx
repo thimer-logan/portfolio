@@ -6,7 +6,6 @@ import { db } from "../firebase";
 function Experience() {
     const [tablistItems, setTabListItems] = useState([]);
     const [tabPanels, setTabPanels] = useState([]);
-    
 
     const fetchData = async () => {
         await getDocs(collection(db, "experience")).then((querySnapshot) => {

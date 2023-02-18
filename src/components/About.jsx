@@ -34,7 +34,7 @@ function About() {
                         <p>{content.description}</p>
                         <p>Some of my interests include:</p>
                         <ul className="list fa-ul">
-                            {content.interests.map(role => <li><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>)}
+                            {'interests' in content ? content.interests.map(role => <li><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>) : null}
                         </ul>
                     </Col>
                 </Row>

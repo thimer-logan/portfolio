@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Resume from '../assets/Resume.pdf';
 
 //import './navbar.css';
 
@@ -44,7 +45,7 @@ const NavBar = () => {
       <Nav.Link className='nav-item' href="#experience">Experience</Nav.Link>
       <Nav.Link className='nav-item' href="#projects">Projects</Nav.Link>
       <Nav.Link className='nav-item' href="#education">Education</Nav.Link>
-      <Button as="a" variant="outline-primary">Resume</Button>
+      <Button as="a" variant="outline-primary" href={Resume} target="_blank">Resume</Button>
       
     </Nav>
   </Navbar.Collapse>
