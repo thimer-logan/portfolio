@@ -11,8 +11,6 @@ function About() {
 
     const fetchData = async () => {
         await getDocs(collection(db, "about")).then((querySnapshot) => {
-            console.log(querySnapshot.size);
-            console.log(querySnapshot.docs.at(0).data());
             setContent(querySnapshot.docs.at(0).data());
         });
     }
@@ -34,7 +32,7 @@ function About() {
                         <p>{content.description}</p>
                         <p>Some of my interests include:</p>
                         <ul className="list fa-ul">
-                            {'interests' in content ? content.interests.map(role => <li><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>) : null}
+                            {'interests' in content ? content.interests.map((role, index) => <li key={index}><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>) : null}
                         </ul>
                     </Col>
                 </Row>

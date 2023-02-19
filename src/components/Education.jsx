@@ -32,7 +32,7 @@ function Education() {
         <Container>
             {education.map((elem) => {
                 return (
-                    <Row className='education-row'>
+                    <Row className='education-row' key={elem.id}>
                         <Col md={3}>
                             <img src={process.env.PUBLIC_URL + elem.img} alt={elem.school} height={100}/>
                         </Col>

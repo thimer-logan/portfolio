@@ -32,11 +32,11 @@ function Skills() {
             <Row>
                 {skills.map((elem) => {
                     return (
-                        <Col className='skill' md={6} lg={4}>
+                        <Col className='skill' md={6} lg={4} key={elem.id}>
                             <Icon name={elem.name} className={'skills-icon'}/>
                             <h4>{elem.name}</h4>
                             <ul className="list fa-ul">
-                                {elem.description.map(role => <li><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>)}
+                                {elem.description.map((role, index) => <li key={index}><span className="fa-li"><i className="fa-sharp fa-solid fa-angle-right"></i></span>{role}</li>)}
                             </ul>
                         </Col>
                     )

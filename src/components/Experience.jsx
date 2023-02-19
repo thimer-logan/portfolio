@@ -7,11 +7,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/system";
+import { useViewport } from "../utils/utils";
 
 function Experience() {
     const [tablistItems, setTabListItems] = useState([]);
     const [tabPanels, setTabPanels] = useState([]);
     const [value, setValue] = React.useState(0);
+    const { width, height } = useViewport();
 
     const theme = createTheme({
         palette: {
@@ -44,18 +46,18 @@ function Experience() {
 
             arr.sort((a, b) => (a.id < b.id ? 1 : b.id < a.id ? -1 : 0));
             setTabListItems(
-                arr.map((elem) => <Tab label={elem.company} value={elem.id} />)
+                arr.map((elem) => <Tab label={elem.company} value={elem.id.toString()} key={elem.id} />)
             );
             setTabPanels(
                 arr.map((elem) => {
                     return (
-                        <TabPanel value={elem.id}>
+                        <TabPanel value={elem.id.toString()} key={elem.id}>
                             <div className="exp-content">
                                 <h5>{elem.title}</h5>
                                 <p>{elem.date}</p>
                                 <ul className="list fa-ul">
-                                    {elem.roles.map((role) => (
-                                        <li>
+                                    {elem.roles.map((role, index) => (
+                                        <li key={index}>
                                             <span className="fa-li">
                                                 <i className="fa-sharp fa-solid fa-angle-right"></i>
                                             </span>
@@ -68,6 +70,8 @@ function Experience() {
                     );
                 })
             );
+
+            setValue(Math.max(...arr.map(o => o.id)));
         });
     };
 
@@ -78,20 +82,14 @@ function Experience() {
     return (
         <section id="experience">
             <h2 className="section-heading">Experience</h2>
-            <div className="inner-content">
-                {/* <Tabs>
-                    <TabList>{tablistItems}</TabList>
-
-                    {tabPanels}
-                </Tabs> */}
+            <div className="exp-box">
                 <ThemeProvider theme={theme}>
-                    <TabContext value={value}>
-                        <Box sx={{ borderRight: 1, borderColor: "divider" }}>
+                    <TabContext value={value.toString()}>
+                        <Box sx={{ borderRight: 1, borderColor: "divider"}}>
                             <TabList
-                                orientation="vertical"
+                                orientation={ width > 600 ? "vertical": "horizontal"}                                
                                 variant="scrollable"
                                 onChange={handleChange}
-                                aria-label="Vertical tabs example"
                             >
                                 {tablistItems}
                             </TabList>

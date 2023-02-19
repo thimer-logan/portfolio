@@ -19,7 +19,7 @@ function Projects() {
             setProjects(
                 arr.map((elem) => {
                     return (
-                    <Col md={6} lg={4}>
+                    <Col md={6} lg={4} key={elem.id}>
                         <Card className='project-card-outer'>
                             <Card className='project-card'>
                                 <Card.Img className='card-img' variant='top' src={process.env.PUBLIC_URL + elem.img} />
