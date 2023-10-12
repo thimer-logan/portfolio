@@ -4,11 +4,12 @@
   --normal-font: 400;
   --bold-font: 700;
   --bolder-font: 900;
-  --bg-color: #333333;
+  --bg-color: #111612;
   --primary-color: #33ff40;
   --secondary-color: #ff7235;
   --primary-shadow: #beffad;
   --secondary-shadow: #a17a69;
+  --primary-dark: #0d4610;
   --bottom-margin: 0.5rem;
   --bottom-margin-2: 1rem;
   --line-height: 1.7rem;
@@ -33,6 +34,27 @@ body {
   /* background: #172534; */
   background: var(--bg-color);
   position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-shadow);
+  border-radius: 12px;
 }
 
 h1 {
@@ -67,8 +89,8 @@ section {
   max-width: 900px;
   padding: 50px 0;
   margin: 100px auto;
-  /* min-height: 100vh;
-  height: 100vh; */
+  min-height: 100vh;
+  /* height: 100vh; */
   scroll-snap-align: center;
   border-radius: 50px;
 
