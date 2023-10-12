@@ -13,6 +13,7 @@ import Education from "./components/Education";
 import Home from "./components/Home";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import Particle from "./components/Particle";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App() {
         <NavBar />
 
         <main>
+          <Particle />
           <Home />
           <About />
           <Skills />
