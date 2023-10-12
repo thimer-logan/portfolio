@@ -8,13 +8,14 @@ import { fetchCollection } from "../firebase";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/system";
 import { useViewport } from "../utils/utils";
+import { Fade, Slide } from "react-awesome-reveal";
 
 function Experience() {
   const { data, status } = useQuery("experience", () =>
     fetchCollection("experience")
   );
   const [value, setValue] = React.useState(-1);
-  const { width, height } = useViewport();
+  const { width } = useViewport();
 
   const theme = createTheme({
     palette: {
@@ -44,60 +45,64 @@ function Experience() {
 
   return (
     <section id="experience">
-      <h2 className="section-heading">Experience</h2>
-      {status === "error" && <p>Error fetching data</p>}
-      {status === "loading" && <p>Fetching data...</p>}
-      {status === "success" && (
-        <div className="exp-box">
-          <ThemeProvider theme={theme}>
-            <TabContext value={value.toString()}>
-              <Box
-                sx={{
-                  flex: 1,
-                  display: "flex",
-                  borderRight: 1,
-                  borderColor: "divider",
-                }}
-              >
-                <TabList
-                  orientation={width > 600 ? "vertical" : "horizontal"}
-                  variant="scrollable"
-                  scrollButtons="auto"
-                  onChange={handleChange}
+      <Slide triggerOnce cascade>
+        <h2 className="section-heading">Experience</h2>
+      </Slide>
+      <Fade triggerOnce cascade delay={500}>
+        {status === "error" && <p>Error fetching data</p>}
+        {status === "loading" && <p>Fetching data...</p>}
+        {status === "success" && (
+          <div className="exp-box">
+            <ThemeProvider theme={theme}>
+              <TabContext value={value.toString()}>
+                <Box
+                  sx={{
+                    flex: 1,
+                    display: "flex",
+                    borderRight: 1,
+                    borderColor: "divider",
+                  }}
                 >
-                  {data.map((elem) => (
-                    <Tab
-                      label={elem.company}
-                      value={elem.id.toString()}
-                      key={elem.id}
-                      wrapped
-                    />
-                  ))}
-                </TabList>
-              </Box>
+                  <TabList
+                    orientation={width > 600 ? "vertical" : "horizontal"}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    onChange={handleChange}
+                  >
+                    {data.map((elem) => (
+                      <Tab
+                        label={elem.company}
+                        value={elem.id.toString()}
+                        key={elem.id}
+                        wrapped
+                      />
+                    ))}
+                  </TabList>
+                </Box>
 
-              {data.map((elem) => (
-                <TabPanel value={elem.id.toString()} key={elem.id}>
-                  <div className="exp-content">
-                    <h5>{elem.title}</h5>
-                    <p>{elem.date}</p>
-                    <ul className="list fa-ul">
-                      {elem.roles.map((role, index) => (
-                        <li key={index}>
-                          <span className="fa-li">
-                            <i className="fa-sharp fa-solid fa-angle-right"></i>
-                          </span>
-                          {role}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </TabPanel>
-              ))}
-            </TabContext>
-          </ThemeProvider>
-        </div>
-      )}
+                {data.map((elem) => (
+                  <TabPanel value={elem.id.toString()} key={elem.id}>
+                    <div className="exp-content">
+                      <h5>{elem.title}</h5>
+                      <p>{elem.date}</p>
+                      <ul className="list fa-ul">
+                        {elem.roles.map((role, index) => (
+                          <li key={index}>
+                            <span className="fa-li">
+                              <i className="fa-sharp fa-solid fa-angle-right"></i>
+                            </span>
+                            {role}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </TabPanel>
+                ))}
+              </TabContext>
+            </ThemeProvider>
+          </div>
+        )}
+      </Fade>
     </section>
   );
 }
